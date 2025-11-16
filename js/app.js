@@ -38,26 +38,36 @@ function marcarTabActivo(index) {
   }
 }
 
+function actualizarTodayPill(texto) {
+  const pill = document.getElementById("today-pill");
+  if (!pill) return;
+  pill.querySelector("span").textContent = texto;
+}
+
 function renderMenu(index) {
   const container = document.getElementById("menu-container");
   const indicator = document.getElementById("page-indicator");
 
   if (!MENUS.length) {
-    container.innerHTML = '<div class="menu-card"><div class="error">No se han podido cargar datos del menú.</div></div>';
+    container.innerHTML =
+      '<div class="menu-card glass" data-aos="fade-up"><div class="error"><i class="fa-solid fa-triangle-exclamation"></i><span>No se han podido cargar datos del menú.</span></div></div>';
     indicator.textContent = "";
+    actualizarTodayPill("Sin datos de menú");
+    if (window.AOS) AOS.init();
     return;
   }
 
   if (index === null || MENUS[index] === undefined) {
     // Vista de fin de semana
     container.innerHTML = `
-      <div class="menu-card">
+      <div class="menu-card glass" data-aos="fade-up">
         <div class="menu-header">
           <div class="menu-tag">Fin de semana</div>
         </div>
         <div class="divider"></div>
         <div class="weekend-message">
-          <p>Hoy no hay menú del día.</p>
+          <p class="weekend-title">Fin de semana</p>
+          <p class="weekend-sub">El menú del día está disponible de lunes a viernes.</p>
           <p>Puedes consultarnos disponibilidad especial en el teléfono <strong>${TELEFONO}</strong>.</p>
         </div>
         <div class="menu-notice">
@@ -68,8 +78,10 @@ function renderMenu(index) {
       </div>
     `;
     indicator.textContent = "Hoy: fin de semana · sin menú";
+    actualizarTodayPill("Fin de semana · sin menú");
     currentIndex = null;
     marcarTabActivo(null);
+    if (window.AOS) AOS.init();
     return;
   }
 
@@ -79,10 +91,13 @@ function renderMenu(index) {
   const postres  = (menu.postres  || []).map(p => `<li>${p}</li>`).join("");
 
   container.innerHTML = `
-    <div class="menu-card">
+    <div class="menu-card glass" data-aos="fade-up">
       <header class="menu-header">
         <div class="menu-tag">Menú del día</div>
-        <div class="day-pill">${menu.dia}</div>
+        <div class="today-pill" id="today-pill">
+          <i class="fa-regular fa-calendar"></i>
+          <span>Menú de hoy</span>
+        </div>
       </header>
       <div class="divider"></div>
       <div class="dish-of-day">
@@ -91,15 +106,15 @@ function renderMenu(index) {
       </div>
       <div class="sections-grid">
         <section class="section">
-          <h3>Primeros</h3>
+          <h3><i class="fa-solid fa-leaf"></i><span>Primeros</span></h3>
           <ul>${primeros}</ul>
         </section>
         <section class="section">
-          <h3>Segundos</h3>
+          <h3><i class="fa-solid fa-drumstick-bite"></i><span>Segundos</span></h3>
           <ul>${segundos}</ul>
         </section>
         <section class="section">
-          <h3>Postres caseros</h3>
+          <h3><i class="fa-solid fa-ice-cream"></i><span>Postres caseros</span></h3>
           <ul>${postres}</ul>
         </section>
       </div>
@@ -115,16 +130,32 @@ function renderMenu(index) {
           <span class="price-tag">Menú completo: ${PRECIO_MENU.toFixed(2)} €</span>
         </div>
         <div class="contact">
-          Reservas: <strong>${TELEFONO}</strong><br>
-          Avenida del Plantío 6, Coslada
+          <span class="contact-line">
+            <i class="fa-solid fa-phone"></i>
+            <strong>${TELEFONO}</strong>
+          </span><br>
+          <span class="contact-line">
+            <i class="fa-solid fa-location-dot"></i>
+            Avenida del Plantío 6, Coslada
+          </span>
         </div>
       </footer>
     </div>
   `;
 
-  indicator.textContent = "Hoy: " + (dayNames[index] || "");
+  const label = dayNames[index] || "";
+  indicator.textContent = "Hoy: " + label;
+  actualizarTodayPill(label ? `Hoy · ${label}` : "Menú de hoy");
   currentIndex = index;
   marcarTabActivo(index);
+
+  // Inicializa/actualiza AOS después de pintar el contenido
+  if (window.AOS) {
+    AOS.init({
+      duration: 600,
+      once: true
+    });
+  }
 }
 
 function initByToday() {
@@ -141,7 +172,10 @@ function buildFromRows(rows) {
   const valid = rows.filter(r => r[COL_DIA]);
   if (!valid.length) {
     const container = document.getElementById("menu-container");
-    container.innerHTML = '<div class="menu-card"><div class="error">No se han encontrado filas válidas en el CSV.</div></div>';
+    container.innerHTML =
+      '<div class="menu-card glass" data-aos="fade-up"><div class="error"><i class="fa-solid fa-triangle-exclamation"></i><span>No se han encontrado filas válidas en el CSV.</span></div></div>';
+    actualizarTodayPill("Sin datos de menú");
+    if (window.AOS) AOS.init();
     return;
   }
 
@@ -166,7 +200,10 @@ function buildFromRows(rows) {
 function loadCSV() {
   const container = document.getElementById("menu-container");
   if (!CSV_URL || CSV_URL === "PEGAR_AQUI_URL_CSV_DE_GOOGLE_SHEETS") {
-    container.innerHTML = '<div class="menu-card"><div class="error">Configura primero la URL del CSV de Google Sheets en js/config.js.</div></div>';
+    container.innerHTML =
+      '<div class="menu-card glass" data-aos="fade-up"><div class="error"><i class="fa-solid fa-triangle-exclamation"></i><span>Configura primero la URL del CSV de Google Sheets en js/config.js.</span></div></div>';
+    actualizarTodayPill("Configura Google Sheets");
+    if (window.AOS) AOS.init();
     return;
   }
 
@@ -179,7 +216,10 @@ function loadCSV() {
     },
     error: function(err) {
       console.error(err);
-      container.innerHTML = '<div class="menu-card"><div class="error">Error al cargar el CSV de Google Sheets.</div></div>';
+      container.innerHTML =
+        '<div class="menu-card glass" data-aos="fade-up"><div class="error"><i class="fa-solid fa-triangle-exclamation"></i><span>Error al cargar el CSV de Google Sheets.</span></div></div>';
+      actualizarTodayPill("Error al cargar menú");
+      if (window.AOS) AOS.init();
     }
   });
 }

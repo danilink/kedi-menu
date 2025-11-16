@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Menú diario · La Casona</title>
+  <title>Menú jueves · La Casona (TEST)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google Fonts: Inter -->
@@ -22,12 +22,13 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
   />
 
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- IMPORTANTE: rutas relativas hacia arriba -->
+  <link rel="stylesheet" href="../css/styles.css">
 
   <!-- Papa Parse para leer CSV de Google Sheets -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="js/config.js"></script>
-  <script defer src="js/app.js"></script>
+  <script src="../js/config.js"></script>
+  <script defer src="../js/app.js"></script>
 </head>
 <body>
   <div class="bg-layer"></div>
@@ -36,12 +37,13 @@
   <div class="app">
     <header class="top-bar glass">
       <div class="brand-row">
-        <img src="assets/logo.png" alt="La Casona" class="brand-logo" />
+        <!-- Ojo: logo relativo a test/ → ../assets -->
+        <img src="../assets/logo.png" alt="La Casona" class="brand-logo" />
         <div class="brand-stack">
           <span class="brand-main">La Casona</span>
           <span class="brand-tagline">
             <i class="fa-solid fa-bowl-food"></i>
-            Comida casera para llevar
+            Comida casera para llevar · TEST Jueves
           </span>
         </div>
       </div>
@@ -63,11 +65,6 @@
             <span class="day-tab-label">Vie</span>
           </button>
         </nav>
-         <!-- 🔔 NUEVO: enlace al menú navideño 
-        <a href="pages/navidad.html" class="navidad-link" title="Ver menú especial de Navidad">
-          <i class="fa-solid fa-tree"></i>
-          <span>Menú Navidad</span>
-        </a>-->
       </div>
     </header>
 
@@ -87,7 +84,30 @@
     </footer>
   </div>
 
-  <!-- AOS JS (se inicializa en app.js después de pintar el menú) -->
+  <!-- AOS JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Script de TEST: forzar que se muestre jueves (índice 3) -->
+  <script>
+    // 0 = lunes, 1 = martes, 2 = miércoles, 3 = jueves, 4 = viernes
+    const TEST_DAY_INDEX = 1;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const interval = setInterval(() => {
+        try {
+          // MENUS y renderMenu están definidos en app.js
+          if (typeof renderMenu === "function" &&
+              Array.isArray(MENUS) &&
+              MENUS.length > TEST_DAY_INDEX) {
+
+            renderMenu(TEST_DAY_INDEX);
+            clearInterval(interval);
+          }
+        } catch (e) {
+          // si todavía no están definidas, seguimos esperando
+        }
+      }, 150);
+    });
+  </script>
 </body>
 </html>

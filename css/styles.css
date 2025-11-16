@@ -1,10 +1,12 @@
 :root {
-  --bg: #f5f5f7;
+  --bg: #ffffff;
+  --bg-soft: #f9fafb;
   --card-bg: #ffffff;
-  --text-main: #222222;
-  --text-muted: #666666;
-  --border-soft: #dedede;
-  --accent: #444444;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-soft: #e5e7eb;
+  --accent: #f97316;
+  --accent-soft: rgba(249, 115, 22, 0.08);
 }
 
 @page {
@@ -19,93 +21,212 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  background: var(--bg);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(249, 115, 22, 0.18) 0, transparent 45%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.15) 0, transparent 45%),
+    var(--bg-soft);
   color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* capas decorativas (muy suaves) */
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(209, 213, 219, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(209, 213, 219, 0.4) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-layer-2 {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 60%);
+  opacity: 1;
+}
+
+/* contenedor principal */
+
 .app {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* efecto glass claro */
+
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(249, 250, 251, 0.94));
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  backdrop-filter: blur(14px);
 }
 
 /* Cabecera / branding */
 
 .top-bar {
   width: 100%;
-  max-width: 210mm;
-  margin: 4px auto 0;
-  padding: 4px 10px;
+  max-width: 1100px;
+  margin: 12px auto 0;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  font-size: 14px;
+  gap: 16px;
+  border-radius: 999px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
 }
 
 .brand-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .brand-logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 999px;
+  width: 50px;
+  height: 50px;
+  border-radius: 18px;
   object-fit: cover;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
 }
 
 .brand-stack {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .brand-main {
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
+.brand-tagline {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-tagline i {
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Tabs de días */
+
 .day-tabs {
   display: inline-flex;
-  padding: 1px;
+  padding: 3px;
   border-radius: 999px;
-  border: 1px solid var(--border-soft);
-  background: rgba(255,255,255,0.9);
-  gap: 2px;
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  gap: 3px;
 }
 
 .day-tab {
   border: none;
   background: transparent;
-  padding: 4px 9px;
+  padding: 4px 11px;
   border-radius: 999px;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   cursor: default;
   color: var(--text-muted);
-  opacity: 0.45;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-tab-label {
+  transform: translateY(0.5px);
 }
 
 .day-tab.active {
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--accent-soft);
+  color: #9a3412;
   opacity: 1;
-  cursor: default;
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
 }
+
+/* pill “menú de hoy” */
+
+.today-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.today-pill i {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.navidad-link {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  background: linear-gradient(135deg, #fffbeb, #fee2e2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #b91c1c;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.navidad-link i {
+  font-size: 12px;
+  color: #16a34a;
+}
+
+.navidad-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(248, 113, 113, 0.35);
+  background: linear-gradient(135deg, #fee2e2, #fffbeb);
+}
+
 
 /* Página y tarjeta de menú */
 
 .page {
   width: 100%;
-  max-width: 210mm;
-  margin: 0 auto;
-  padding: 8px 10px 4px;
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 16px 16px 10px;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -117,15 +238,28 @@ body {
 
 .menu-card {
   width: 100%;
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 16px 18px 10px;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.04);
+  border-radius: 24px;
+  padding: 22px 26px 16px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  position: relative;
 }
+
+/* halo decorativo suave */
+
+.menu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* header de la tarjeta */
 
 .menu-header {
   display: flex;
@@ -136,32 +270,42 @@ body {
 
 .menu-tag {
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.24em;
 }
 
 .day-pill {
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 999px;
-  border: 1px solid var(--accent);
+  border: 1px solid rgba(209, 213, 219, 0.9);
   font-weight: 650;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  background: radial-gradient(circle at top left, #fef9c3, #ffffff);
 }
+
+/* separador */
 
 .divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--border-soft), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(209, 213, 219, 0.9),
+    transparent
+  );
   margin-top: 4px;
 }
 
+/* plato del día */
+
 .dish-of-day {
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border-soft);
-  background: linear-gradient(135deg, #fafafa, #f0f0f0);
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(252, 211, 77, 0.7);
+  background: radial-gradient(circle at top left, rgba(252, 211, 77, 0.32), #fff7ed);
   text-align: center;
 }
 
@@ -169,7 +313,7 @@ body {
   margin: 0 0 6px 0;
   font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: var(--text-muted);
 }
 
@@ -179,31 +323,52 @@ body {
   font-weight: 700;
 }
 
+/* Grid de secciones */
+
 .sections-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 4px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.section {
+  padding: 10px 10px 8px;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #f9fafb
+  );
+  border: 1px solid rgba(209, 213, 219, 0.9);
 }
 
 .section h3 {
-  margin: 0 0 4px 0;
-  font-size: 12px;
+  margin: 0 0 6px 0;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section h3 i {
+  font-size: 11px;
+  color: var(--accent);
 }
 
 .section ul {
   margin: 0;
   padding-left: 0;
-  font-size: 13px;
+  font-size: 12px;
   list-style: none;
 }
 
 .section li {
   margin-bottom: 4px;
-  line-height: 1.4;
+  line-height: 1.5;
   position: relative;
   padding-left: 18px;
 }
@@ -214,26 +379,32 @@ body {
   left: 0;
   top: 0;
   font-size: 13px;
+  color: var(--accent);
 }
+
+/* Avisos */
 
 .menu-notice {
   margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px dashed var(--border-soft);
+  padding-top: 8px;
+  border-top: 1px dashed rgba(209, 213, 219, 0.9);
   text-align: center;
   font-size: 11px;
   text-transform: uppercase;
   line-height: 1.4;
+  color: var(--text-muted);
 }
 
 .menu-notice p {
-  margin: 1px 0;
+  margin: 2px 0;
 }
 
+/* Footer */
+
 .menu-footer {
-  border-top: 1px dashed var(--border-soft);
-  padding-top: 6px;
-  margin-top: 4px;
+  border-top: 1px dashed rgba(209, 213, 219, 0.9);
+  padding-top: 8px;
+  margin-top: 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -244,7 +415,7 @@ body {
 .prices {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
 }
 
@@ -260,13 +431,24 @@ body {
   text-align: right;
 }
 
-/* Paginación (solo texto de estado del día) */
+.contact-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact i {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* Paginación (estado del día) */
 
 .pagination {
   width: 100%;
-  max-width: 210mm;
-  margin: 2px auto 8px;
-  padding: 2px 10px 6px;
+  max-width: 1100px;
+  margin: 6px auto 16px;
+  padding: 4px 16px 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -279,13 +461,15 @@ body {
   font-weight: 550;
 }
 
+/* Vista fin de semana */
+
 .weekend-message {
   text-align: center;
-  padding: 12px 6px 4px;
+  padding: 16px 8px 6px;
 }
 
 .weekend-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 650;
   margin-bottom: 4px;
 }
@@ -295,18 +479,22 @@ body {
   color: var(--text-muted);
 }
 
-.loading {
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-muted);
-  padding: 20px 10px;
-}
+/* Loading / error */
 
+.loading,
 .error {
   text-align: center;
   font-size: 13px;
-  color: #b00020;
-  padding: 20px 10px;
+  color: var(--text-muted);
+  padding: 30px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.error {
+  color: #b91c1c;
 }
 
 /* Responsive */
@@ -315,37 +503,46 @@ body {
   .top-bar {
     flex-direction: column;
     align-items: flex-start;
+    border-radius: 18px;
   }
+
   .page {
-    padding: 6px 8px 4px;
+    padding: 10px 10px 8px;
   }
+
   .menu-card {
-    padding: 14px 14px 10px;
-    box-shadow: none;
-    border-radius: 10px;
+    padding: 18px 16px 12px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
   }
+
   .sections-grid {
     grid-template-columns: 1fr;
   }
+
   .menu-footer {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .contact {
     text-align: left;
   }
 }
 
-/* Estilos de impresión */
+/* Estilos de impresión: blanco y negro, centrado en A4 */
 
 @media print {
   body {
-    background: #ffffff;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
 
+  .bg-layer,
+  .bg-layer-2,
   .top-bar,
   .pagination {
-    display: none;
+    display: none !important;
   }
 
   .app {
@@ -356,81 +553,95 @@ body {
     width: 210mm;
     height: 297mm;
     margin: 0;
-    padding: 0;              /* si quieres centrado justo-justo, reduce padding */
+    padding: 0;
     display: flex;
-    text-align: center;
-    align-items: center;     /* centra verticalmente */
-    justify-content: center; /* centra horizontalmente */
-  }
-  
-  .section li::before {
-    display: none;
+    align-items: center;
+    justify-content: center;
   }
 
   #menu-container {
-   width: 190mm;          /* un poco menos que 210mm para margen */
+    width: 190mm;
     margin: 0 auto;
     display: flex;
     justify-content: center;
   }
 
   .menu-card {
+    width: 100%;
+    max-width: 190mm;
     box-shadow: none;
-    max-width: 175mm;        /* ancho “tarjeta” */
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 0;
+    border: 1px solid #000000;
   }
 
-  /* Antes 18px */
+  .menu-card::before {
+    display: none;
+  }
+
+  .dish-of-day,
+  .section {
+    background: #ffffff !important;
+    border-color: #000000 !important;
+  }
+
+  .menu-tag,
+  .day-pill,
+  .dish-of-day h2,
+  .dish-name,
+  .section h3,
+  .section ul,
+  .menu-notice,
+  .menu-footer,
+  .weekend-title,
+  .weekend-message,
+  .weekend-sub {
+    color: #000000 !important;
+  }
+
+  .section li::before {
+    color: #000000 !important;
+  }
+
+  /* fuentes un poco más grandes en impresión */
+
   .brand-main {
     font-size: 20px;
   }
 
-  /* Antes 12px */
   .menu-tag {
     font-size: 14px;
   }
 
-  /* Antes 13px */
   .day-pill {
     font-size: 15px;
   }
 
-  /* Antes 13px */
   .dish-of-day h2 {
     font-size: 15px;
   }
 
-  /* Antes 19px */
   .dish-name {
     font-size: 21px;
   }
 
-  /* Antes 12px */
   .section h3 {
     font-size: 14px;
-    color: var(--text-main);
   }
 
-  /* Antes 12px */
   .section ul {
     font-size: 14px;
   }
 
-  /* Antes 11px */
   .menu-notice {
     font-size: 13px;
   }
 
-  /* Antes 12px */
   .menu-footer {
     font-size: 14px;
   }
 
-  /* Antes 12px */
-  .pagination {
-    font-size: 14px;
-  }
-
-  /* Antes 18px / 13px */
   .weekend-title {
     font-size: 20px;
   }
@@ -440,10 +651,8 @@ body {
     font-size: 15px;
   }
 
-  /* Antes 13px */
   .loading,
   .error {
     font-size: 15px;
   }
 }
-
