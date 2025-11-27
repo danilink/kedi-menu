@@ -141,17 +141,19 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px;                  /* igual que nav-chip */
+      padding: 8px 14px;                  /* un poco más grande */
       border-radius: 999px;
       border: 1px solid #e5e7eb;          /* igual tono borde */
       background: #ffffff;
-      font-size: 13px;                    /* igual que nav-chip */
+      font-size: 14px;                    /* ligeramente mayor */
+      font-weight: 600;
       color: var(--text-main);
       text-decoration: none;
+      align-self: flex-start;              /* evita ocupar todo el ancho */
     }
 
     .nav-back-link i {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     /* SECCIONES DEL MENÚ */
@@ -168,15 +170,18 @@
 
     .nav-section-header {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 10px;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     .nav-section-text {
       display: flex;
       flex-direction: column;
       gap: 4px;
+      align-items: center;
     }
 
     .nav-section-kicker {
@@ -355,6 +360,16 @@
       .nav-section {
         border-color: #000000;
         page-break-inside: avoid;
+      }
+
+      .nav-section-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .nav-section-text {
+        align-items: center;
       }
 
       .nav-item-row {
