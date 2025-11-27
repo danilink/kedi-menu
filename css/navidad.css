@@ -1,0 +1,381 @@
+    :root {
+      --xmas-red: #b91c1c;
+      --xmas-red-soft: #fecaca;
+      --xmas-green: #15803d;
+      --xmas-gold: #f59e0b;
+      --page-bg: #f3f4f6; /* fondo claro tipo página principal */
+      --text-main: #111827;
+      --text-muted: #4b5563;
+    }
+
+    body.navidad-body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text-main);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .navidad-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 16px 32px;
+      box-sizing: border-box;
+    }
+
+    /* ENCABEZADO / HERO */
+
+    .nav-header {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .nav-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      object-fit: cover;
+      background: #111827;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-brand-name {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-script {
+      font-family: "Great Vibes", cursive;
+      font-size: 24px;
+      color: var(--xmas-green);
+    }
+
+    .nav-brand-year {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .nav-chip i {
+      color: var(--xmas-gold);
+    }
+
+    .nav-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .nav-subtitle strong {
+      color: var(--xmas-red);
+    }
+
+    .nav-cash-warning {
+      margin-top: 8px;
+      padding: 12px 14px;                 /* más grande */
+      border-radius: 14px;
+      background: #fef2f2;
+      border: 1px solid var(--xmas-red-soft);
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 18px;                    /* +3px */
+    }
+
+    .nav-cash-warning i {
+      font-size: 20px;
+      color: var(--xmas-red);
+      margin-top: 2px;
+    }
+
+    .nav-cash-main {
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--xmas-red);
+      margin-bottom: 2px;
+    }
+
+    .nav-cash-detail {
+      font-size: 17px;                    /* +3px */
+    }
+
+    .nav-back-link {
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;                  /* igual que nav-chip */
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;          /* igual tono borde */
+      background: #ffffff;
+      font-size: 13px;                    /* igual que nav-chip */
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .nav-back-link i {
+      font-size: 12px;
+    }
+
+    /* SECCIONES DEL MENÚ */
+
+    .nav-section {
+      padding: 18px 0 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav-section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .nav-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .nav-section-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--xmas-green);
+    }
+
+    .nav-section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-section-icon {
+      display: none;
+    }
+
+    .nav-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;            /* separación entre platos */
+      font-size: 17px;      /* texto grande */
+    }
+
+    .nav-item-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-item-name {
+      flex: 1;
+      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-item-price {
+      white-space: nowrap;
+      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .nav-note-small {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .nav-asados-lines {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 17px;
+    }
+
+    .nav-asados-lines span {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* FOOTER */
+
+    .nav-footer {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .nav-footer-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 360px;
+    }
+
+    /* el bloque de la nota final ocupa todo el ancho */
+    .nav-footer-block.note-full {
+      max-width: none;
+      flex: 1 1 100%;
+    }
+
+    .nav-footer-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-footer-line i {
+      color: var(--xmas-gold);
+      font-size: 14px;
+    }
+
+    .nav-footer-note-strong {
+      font-weight: 600;
+      color: var(--xmas-red);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 768px) {
+      .nav-header-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-item-row,
+      .nav-asados-lines span {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-item-price {
+        font-size: 16px;
+      }
+    }
+
+    /* IMPRESIÓN */
+    @media print {
+      body.navidad-body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      .navidad-page {
+        max-width: none;
+        margin: 0;
+        padding: 10mm;
+      }
+
+      .nav-header,
+      .nav-section,
+      .nav-footer {
+        box-shadow: none;
+      }
+
+      .nav-logo {
+        border-color: #000000;
+        box-shadow: none;
+      }
+
+      .nav-chip,
+      .nav-back-link {
+        display: none !important;
+      }
+
+      .nav-cash-warning {
+        background: #ffffff;
+        border-color: #000000;
+      }
+
+      .nav-section-kicker,
+      .nav-section-title,
+      .nav-item-name,
+      .nav-item-price,
+      .nav-footer,
+      .nav-footer-note-strong {
+        color: #000000 !important;
+      }
+
+      .nav-section {
+        border-color: #000000;
+        page-break-inside: avoid;
+      }
+
+      .nav-item-row {
+        flex-direction: row !important;
+        align-items: baseline;
+      }
+
+      .nav-asados-lines span {
+        flex-direction: row !important;
+        align-items: baseline;
+      }
+
+      .nav-item-price {
+        white-space: nowrap;
+      }
+
+      .nav-note-small {
+        color: #000000;
+      }
+
+      .nav-footer {
+        border-top: 1px solid #000000;
+      }
+    }

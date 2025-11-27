@@ -2,219 +2,296 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Menú especial de Navidad · La Casona</title>
+  <title>Menú de Navidad 2025/26 · La Casona</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Fonts: Inter -->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Inter = base, Playfair = títulos, Great Vibes = detalle, Nunito = platos -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Great+Vibes&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (iconos) -->
+  <!-- Iconos -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
 
-  <!-- AOS (animaciones suaves) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-  />
-
-  <!-- Tus estilos comunes -->
+  <!-- (Opcional) estilos generales de tu web -->
   <link rel="stylesheet" href="../css/styles.css">
 
-  <!-- Estilos específicos para la página navideña -->
-  <style>
-    body.christmas-page {
-      background:
-        radial-gradient(circle at top left, rgba(220, 38, 38, 0.12) 0, transparent 50%),
-        radial-gradient(circle at bottom right, rgba(22, 163, 74, 0.12) 0, transparent 55%),
-        var(--bg-soft);
-    }
-
-    .christmas-header .brand-main {
-      color: #b91c1c;
-    }
-
-    .christmas-header .brand-tagline i {
-      color: #16a34a;
-    }
-
-    .christmas-card .dish-of-day {
-      border-color: rgba(220, 38, 38, 0.7);
-      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.9), #fef2f2);
-    }
-
-    .christmas-card .dish-name {
-      font-size: 23px;
-    }
-
-    .christmas-subtitle {
-      margin-top: 8px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .christmas-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    .christmas-badge i {
-      font-size: 12px;
-      color: #16a34a;
-    }
-
-    .christmas-notice p:first-child {
-      font-weight: 600;
-      color: #b91c1c;
-    }
-
-    .christmas-footer .prices .price-tag {
-      color: #b91c1c;
-    }
-
-    .navidad-link--back {
-      background: linear-gradient(135deg, #eff6ff, #e5e7eb);
-      color: #1f2937;
-      border-color: #d1d5db;
-    }
-
-    .navidad-link--back i {
-      color: #4b5563;
-    }
-  </style>
+  <!-- Estilos específicos de la página de Navidad -->
+  <link rel="stylesheet" href="../css/navidad.css">
 </head>
-<body class="christmas-page">
-  <div class="bg-layer"></div>
-  <div class="bg-layer bg-layer-2"></div>
-
-  <div class="app">
-    <header class="top-bar glass christmas-header">
-      <div class="brand-row">
-        <img src="../assets/logo.png" alt="La Casona" class="brand-logo" />
-        <div class="brand-stack">
-          <span class="brand-main">La Casona</span>
-          <span class="brand-tagline">
+<body class="navidad-body">
+  <div class="navidad-page">
+    <!-- ENCABEZADO -->
+    <header class="nav-header">
+      <div class="nav-header-top">
+        <div class="nav-brand">
+          <img src="../assets/logo.png" alt="La Casona" class="nav-logo">
+          <div class="nav-brand-text">
+            <div class="nav-brand-name">La Casona</div>
+            <div class="nav-brand-script">Navidad en familia</div>
+            <div class="nav-brand-year">Menú especial 2025 / 26</div>
+          </div>
+        </div>
+        <div>
+          <div class="nav-chip">
             <i class="fa-solid fa-gift"></i>
-            Menú especial de Navidad
-          </span>
+            <span>Comida casera para llevar</span>
+          </div>
         </div>
       </div>
-      <div class="top-right">
-        <!-- En Navidad no necesitamos los tabs de días, solo volver al menú diario -->
-        <a href="index.html" class="navidad-link navidad-link--back" title="Volver al menú diario">
-          <i class="fa-solid fa-arrow-left"></i>
-          <span>Menú diario</span>
-        </a>
+
+      <p class="nav-subtitle">
+        Encargos por adelantado para <strong>Nochebuena, Nochevieja y Día de Reyes</strong>.
+        Los platos se entregan listos para calentar y servir.
+      </p>
+
+      <!-- AVISO PAGO EN EFECTIVO (más grande) -->
+      <div class="nav-cash-warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>
+          <div class="nav-cash-main">pago únicamente en efectivo</div>
+          <div class="nav-cash-detail">
+            Para el menú de Navidad <strong>solo se acepta pago en EFECTIVO</strong>.
+            No se admiten tarjetas ni otros métodos de pago.
+          </div>
+        </div>
       </div>
+
+      <a href="../index.html" class="nav-back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Volver al menú diario</span>
+      </a>
     </header>
 
-    <main class="page">
-      <div id="menu-container">
-        <div class="menu-card glass christmas-card" data-aos="fade-up">
-          <header class="menu-header">
-            <div class="menu-tag">Menú especial Navidad</div>
-            <div class="day-pill christmas-badge">
-              <i class="fa-regular fa-snowflake"></i>
-              <span>Navidad 2025</span>
-            </div>
-          </header>
-
-          <div class="divider"></div>
-
-          <div class="dish-of-day">
-            <h2>Propuesta de menú</h2>
-            <p class="dish-name">Celebración de Navidad · La Casona</p>
-            <p class="christmas-subtitle">
-              Ideal para comidas de empresa, familias y grupos (mínimo 8 personas).
-            </p>
+    <main>
+      <!-- ENTRANTES Y PRIMEROS -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Para compartir y empezar la mesa</div>
+            <h2 class="nav-section-title">Entrantes y primeros platos</h2>
           </div>
-
-          <div class="sections-grid">
-            <section class="section">
-              <h3>
-                <i class="fa-solid fa-mitten"></i>
-                <span>Entrantes al centro</span>
-              </h3>
-              <ul>
-                <li>Crema de calabaza asada con virutas de jamón y crujiente de pan</li>
-                <li>Tabla de ibéricos y quesos seleccionados</li>
-                <li>Ensalada templada de queso de cabra, manzana y frutos secos</li>
-              </ul>
-            </section>
-
-            <section class="section">
-              <h3>
-                <i class="fa-solid fa-drumstick-bite"></i>
-                <span>Platos principales</span>
-              </h3>
-              <ul>
-                <li>Cordero asado a baja temperatura con patatas panadera</li>
-                <li>Lomo de bacalao confitado con salsa de piquillos</li>
-                <li>Canelones de setas y trufa con bechamel suave (opción vegetariana)</li>
-              </ul>
-            </section>
-
-            <section class="section">
-              <h3>
-                <i class="fa-solid fa-ice-cream"></i>
-                <span>Postres y bebidas</span>
-              </h3>
-              <ul>
-                <li>Tarta de turrón casera con helado de vainilla</li>
-                <li>Coulant de chocolate caliente</li>
-                <li>Sorbete de limón al cava</li>
-                <li>Vino tinto y blanco D.O., refrescos, agua, café o infusión</li>
-              </ul>
-            </section>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-star"></i>
           </div>
-
-          <div class="menu-notice christmas-notice">
-            <p>MENÚ DISPONIBLE SOLO BAJO RESERVA PREVIA</p>
-            <p>FECHAS ORIENTATIVAS: DEL 10 AL 24 DE DICIEMBRE</p>
-            <p>ADAPTAMOS EL MENÚ A ALERGIAS E INTOLERANCIAS (CONSULTAR)</p>
-          </div>
-
-          <footer class="menu-footer christmas-footer">
-            <div class="prices">
-              <span class="price-tag">Precio por persona: 32,00 € (IVA incluido)</span>
-              <span class="dot">·</span>
-              <span>Pan, bebida y café incluidos</span>
-            </div>
-            <div class="contact">
-              <span class="contact-line">
-                <i class="fa-solid fa-phone"></i>
-                <strong>Teléfono / reservas</strong>
-              </span><br>
-              <span class="contact-line">
-                <i class="fa-solid fa-location-dot"></i>
-                Avenida del Plantío 6, Coslada
-              </span>
-            </div>
-          </footer>
         </div>
-      </div>
+        <div class="nav-items">
+          <div class="nav-item-row">
+            <span class="nav-item-name">Flor de alcachofa confitada</span>
+            <span class="nav-item-price">2,25 €/unidad</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Huevos rellenos de bonito</span>
+            <span class="nav-item-price">18,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Croquetas (mín. 6 uds) de jamón, setas, cabrales y pollo</span>
+            <span class="nav-item-price">16,80 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Salpicón de marisco</span>
+            <span class="nav-item-price">35,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Boquerones en vinagre</span>
+            <span class="nav-item-price">34,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Ensaladilla rusa</span>
+            <span class="nav-item-price">16,50 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Lombarda rehogada con manzana y uvas pasas</span>
+            <span class="nav-item-price">18,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Crema de marisco</span>
+            <span class="nav-item-price">7,50 €/ración</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGUNDOS PLATOS -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Para el plato principal</div>
+            <h2 class="nav-section-title">Segundos platos</h2>
+          </div>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+        </div>
+        <div class="nav-items">
+          <div class="nav-item-row">
+            <span class="nav-item-name">Paletilla de cordero lechal asada con guarnición</span>
+            <span class="nav-item-price">29,00 €/ud</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Pierna de cordero lechal asada con guarnición</span>
+            <span class="nav-item-price">25,00 €/ud</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ASADOS ESPECIALES  -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Asados de fiesta</div>
+            <h2 class="nav-section-title">Cordero y cochinillo lechal</h2>
+          </div>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+        </div>
+        <div class="nav-asados-lines">
+          <span>
+            <span class="nav-item-name">Cordero lechal</span>
+            <span class="nav-item-price">Medio 120,00 € · Entero 220,00 €</span>
+          </span>
+          <span>
+            <span class="nav-item-name">Cochinillo lechal</span>
+            <span class="nav-item-price">Medio 95,00 € · Entero 180,00 €</span>
+          </span>
+        </div>
+      </section>
+
+      <!-- CARNES  -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Carnes guisadas y asadas</div>
+            <h2 class="nav-section-title">Carnes</h2>
+          </div>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-drumstick-bite"></i>
+          </div>
+        </div>
+        <div class="nav-items">
+          <div class="nav-item-row">
+            <span class="nav-item-name">Solomillo ibérico relleno de foie gras, bacón, etc.</span>
+            <span class="nav-item-price">20,00 €/unidad</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Costillas asadas con salsa barbacoa</span>
+            <span class="nav-item-price">20,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Carrillada ibérica en salsa de Oporto y manzana</span>
+            <span class="nav-item-price">25,00 €/kg</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- POLLOS -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Nuestro pollos navideños</div>
+            <h2 class="nav-section-title">Pollos</h2>
+          </div>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-egg"></i>
+          </div>
+        </div>
+        <div class="nav-items">
+          <div class="nav-item-row">
+            <span class="nav-item-name">Pollo relleno con salsa (cabrales, ciruelas)</span>
+            <span class="nav-item-price">30,00 €/unidad</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESCADOS -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Del mar a la mesa</div>
+            <h2 class="nav-section-title">Pescados</h2>
+          </div>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-fish"></i>
+          </div>
+        </div>
+        <div class="nav-items">
+          <div class="nav-item-row">
+            <span class="nav-item-name">Pimientos del piquillo rellenos de merluza y gambas</span>
+            <span class="nav-item-price">27,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Bacalao a la vizcaína (lomos con salsa de tomate casero, pimientos y cebolleta morada)</span>
+            <span class="nav-item-price">25,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Merluza marinera</span>
+            <span class="nav-item-price">29,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Guarnición de patatas asadas</span>
+            <span class="nav-item-price">10,00 €/kg</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Merluza rellena</span>
+            <span class="nav-item-price">29,00 €/kg</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- POSTRES -->
+      <section class="nav-section">
+        <div class="nav-section-header">
+          <div class="nav-section-text">
+            <div class="nav-section-kicker">Para terminar</div>
+            <h2 class="nav-section-title">Postres caseros</h2>
+          </div>
+          <div class="nav-section-icon">
+            <i class="fa-solid fa-ice-cream"></i>
+          </div>
+        </div>
+        <div class="nav-items">
+          <div class="nav-item-row">
+            <span class="nav-item-name">Tarta casera de queso</span>
+            <span class="nav-item-price">12,00 €/unidad</span>
+          </div>
+          <div class="nav-item-row">
+            <span class="nav-item-name">Pudin casero</span>
+            <span class="nav-item-price">9,50 €/unidad</span>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="pagination">
-      <span class="page-indicator">Menú especial de Navidad · La Casona</span>
+    <!-- FOOTER -->
+    <footer class="nav-footer">
+      <div class="nav-footer-block">
+        <div class="nav-footer-line">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>La Casona · Avda. del Plantío 6, Coslada</span>
+        </div>
+        <div class="nav-footer-line">
+          <i class="fa-solid fa-phone"></i>
+          <span>Reservas: 912 277 899</span>
+        </div>
+        <div class="nav-footer-line">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <span>Móvil: 637 690 946 (no atendemos WhatsApp)</span>
+        </div>
+      </div>
+      <div class="nav-footer-block note-full">
+        <div class="nav-footer-note-strong">
+          Nota: por causas ajenas a nuestra voluntad los precios pueden ser modificados sin previo aviso.
+        </div>
+        <div style="font-size: 14px;">
+          Recomendamos realizar el pedido con antelación para asegurar disponibilidad de todos los platos,
+          especialmente asados de cordero y cochinillo.
+        </div>
+      </div>
     </footer>
   </div>
-
-  <!-- AOS JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    if (window.AOS) {
-      AOS.init({
-        duration: 600,
-        once: true
-      });
-    }
-  </script>
 </body>
 </html>
