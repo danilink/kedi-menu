@@ -297,6 +297,11 @@
       color: var(--xmas-red);
     }
 
+    /* QR específico para impresión */
+    .nav-print-qr {
+      display: none;
+    }
+
     /* RESPONSIVE */
 
     @media (max-width: 768px) {
@@ -355,15 +360,21 @@
 
     /* IMPRESIÓN */
     @media print {
+      @page {
+        margin: 8mm;
+      }
+
       body.navidad-body {
         background: #ffffff !important;
         color: #000000 !important;
+        font-size: 13px;
+        line-height: 1.35;
       }
 
       .navidad-page {
         max-width: none;
         margin: 0;
-        padding: 10mm;
+        padding: 8mm 8mm 6mm;
       }
 
       .nav-header,
@@ -375,10 +386,29 @@
       .nav-header {
         align-items: center;
         text-align: center;
+        gap: 8px;
+        margin-bottom: 12px;
       }
 
       .nav-header-top {
         justify-content: center;
+        gap: 10px;
+      }
+
+      .nav-brand-name {
+        font-size: 22px;
+      }
+
+      .nav-brand-script {
+        font-size: 18px;
+      }
+
+      .nav-brand-year {
+        font-size: 12px;
+      }
+
+      .nav-subtitle {
+        font-size: 13px;
       }
 
       .nav-logo {
@@ -395,6 +425,13 @@
       .nav-cash-warning {
         background: #ffffff;
         border-color: #000000;
+        padding: 10px 12px;
+        font-size: 15px;
+        gap: 8px;
+      }
+
+      .nav-cash-detail {
+        font-size: 14px;
       }
 
       .nav-section-kicker,
@@ -409,16 +446,28 @@
       .nav-section {
         border-color: #000000;
         page-break-inside: avoid;
+        padding: 12px 0 8px;
       }
 
       .nav-section-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 6px;
+        margin-bottom: 8px;
       }
 
       .nav-section-text {
         align-items: center;
+        gap: 2px;
+      }
+
+      .nav-section-kicker {
+        font-size: 10px;
+      }
+
+      .nav-section-title {
+        font-size: 20px;
       }
 
       .nav-item-row {
@@ -426,9 +475,19 @@
         align-items: baseline;
       }
 
+      .nav-items {
+        gap: 6px;
+        font-size: 15px;
+      }
+
       .nav-asados-lines span {
         flex-direction: row !important;
         align-items: baseline;
+      }
+
+      .nav-asados-lines {
+        gap: 6px;
+        font-size: 15px;
       }
 
       .nav-item-price {
@@ -441,5 +500,40 @@
 
       .nav-footer {
         border-top: 1px solid #000000;
+        margin-top: 12px;
+        font-size: 12px;
+        gap: 6px;
       }
+
+      .nav-footer-block {
+        gap: 3px;
+      }
+
+      .nav-footer-line i {
+        font-size: 12px;
+      }
+
+      .nav-print-qr {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10mm;
+        gap: 6px;
+        page-break-inside: avoid;
+        text-align: center;
+      }
+
+      .nav-print-qr-image {
+        width: 55mm;
+        max-width: 220px;
+        height: auto;
+      }
+
+      .nav-qr-caption {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    }
     }
