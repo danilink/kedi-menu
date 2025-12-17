@@ -121,7 +121,9 @@
       border: 1px solid var(--xmas-red-soft);
       color: var(--text-main);
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: 10px;
       font-size: 18px;                    /* +3px */
     }
@@ -129,7 +131,7 @@
     .nav-cash-warning i {
       font-size: 20px;
       color: var(--xmas-red);
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     .nav-cash-main {
@@ -297,11 +299,6 @@
       color: var(--xmas-red);
     }
 
-    /* QR específico para impresión */
-    .nav-print-qr {
-      display: none;
-    }
-
     /* RESPONSIVE */
 
     @media (max-width: 768px) {
@@ -361,54 +358,80 @@
     /* IMPRESIÓN */
     @media print {
       @page {
-        margin: 8mm;
+        margin: 4mm;
+      }
+
+      html {
+        background-color: var(--page-bg) !important;
       }
 
       body.navidad-body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 13px;
-        line-height: 1.35;
+        background-color: var(--page-bg) !important;
+        background-image: none !important;
+        color: var(--text-main) !important;
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.2;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
 
       .navidad-page {
         max-width: none;
         margin: 0;
-        padding: 8mm 8mm 6mm;
+        padding: 4mm 4mm 3mm;
+        background: transparent;
       }
 
       .nav-header,
       .nav-section,
       .nav-footer {
         box-shadow: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
 
       .nav-header {
         align-items: center;
         text-align: center;
-        gap: 8px;
-        margin-bottom: 12px;
+        gap: 4px;
+        margin-bottom: 6px;
+        color: var(--text-main);
+        text-shadow: none;
       }
 
       .nav-header-top {
         justify-content: center;
-        gap: 10px;
+        gap: 4px;
       }
 
       .nav-brand-name {
-        font-size: 22px;
+        font-size: 16px;
+        color: var(--text-main);
+        text-shadow: none;
       }
 
       .nav-brand-script {
-        font-size: 18px;
+        font-size: 13px;
+        color: var(--xmas-green);
+        text-shadow: none;
       }
 
       .nav-brand-year {
-        font-size: 12px;
+        font-size: 10px;
+        color: var(--text-main);
+        text-shadow: none;
       }
 
       .nav-subtitle {
-        font-size: 13px;
+        font-size: 11px;
+        color: var(--text-muted);
+        text-shadow: none;
+      }
+
+      .nav-subtitle strong {
+        color: var(--xmas-red) !important;
+        text-shadow: none;
       }
 
       .nav-logo {
@@ -424,50 +447,86 @@
 
       .nav-cash-warning {
         background: #ffffff;
-        border-color: #000000;
-        padding: 10px 12px;
-        font-size: 15px;
-        gap: 8px;
+        border-color: #e5e7eb;
+        padding: 6px 8px;
+        font-size: 12px;
+        gap: 4px;
+        color: var(--text-main);
       }
 
       .nav-cash-detail {
-        font-size: 14px;
+        font-size: 11px;
       }
 
       .nav-section-kicker,
-      .nav-section-title,
+      .nav-section-title {
+        color: inherit !important;
+        text-shadow: none;
+      }
+
+      .nav-item-name {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
       .nav-item-name,
       .nav-item-price,
       .nav-footer,
       .nav-footer-note-strong {
-        color: #000000 !important;
+        color: var(--text-main) !important;
+        text-shadow: none;
+      }
+
+      .nav-cash-main,
+      .nav-cash-warning i {
+        color: var(--xmas-red) !important;
+        text-shadow: none;
+      }
+
+      main {
+        column-count: 2;
+        column-gap: 6mm;
       }
 
       .nav-section {
-        border-color: #000000;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        background: #ffffff;
         page-break-inside: avoid;
-        padding: 12px 0 8px;
+        padding: 6px 6px 4px;
+        margin-bottom: 4px;
       }
 
       .nav-section-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 6px;
-        margin-bottom: 8px;
+        gap: 3px;
+        margin-bottom: 4px;
       }
 
       .nav-section-text {
         align-items: center;
-        gap: 2px;
+        gap: 1px;
       }
 
       .nav-section-kicker {
         font-size: 10px;
+        letter-spacing: 0.16em;
+        color: var(--xmas-green) !important;
       }
 
       .nav-section-title {
-        font-size: 20px;
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+      }
+
+      .nav-header,
+      .nav-footer {
+        background: #ffffff;
+        padding: 6px;
+        border-radius: 0;
       }
 
       .nav-item-row {
@@ -476,8 +535,8 @@
       }
 
       .nav-items {
-        gap: 6px;
-        font-size: 15px;
+        gap: 3px;
+        font-size: 13px;
       }
 
       .nav-asados-lines span {
@@ -486,54 +545,57 @@
       }
 
       .nav-asados-lines {
-        gap: 6px;
-        font-size: 15px;
+        gap: 3px;
+        font-size: 13px;
       }
 
       .nav-item-price {
         white-space: nowrap;
+        color: var(--text-main) !important;
       }
 
       .nav-note-small {
-        color: #000000;
+        color: var(--text-muted);
       }
 
       .nav-footer {
-        border-top: 1px solid #000000;
-        margin-top: 12px;
-        font-size: 12px;
-        gap: 6px;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 6px;
+        font-size: 10px;
+        gap: 3px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .nav-reservas {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 18px; /* +3px en impresión */
+        color: var(--text-main) !important;
+      }
+
+      .nav-reservas strong {
+        font-size: inherit;
+        font-weight: 800;
+        color: inherit;
       }
 
       .nav-footer-block {
-        gap: 3px;
+        gap: 2px;
+        align-items: center;
       }
 
       .nav-footer-line i {
-        font-size: 12px;
-      }
-
-      .nav-print-qr {
-        display: flex;
-        flex-direction: column;
+        font-size: 16px; /* igual al texto del pie */
+        width: 1em;
+        height: 1em;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        margin-top: 10mm;
-        gap: 6px;
-        page-break-inside: avoid;
-        text-align: center;
+        color: var(--text-main);
       }
 
-      .nav-print-qr-image {
-        width: 55mm;
-        max-width: 220px;
-        height: auto;
-      }
-
-      .nav-qr-caption {
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-    }
     }
